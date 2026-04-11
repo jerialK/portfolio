@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karan Veer Singh Jerial — Operations & Supply Chain Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #050a14;
+    --surface: #0d1829;
+    --surface2: #111f36;
+    --blue: #38bdf8;
+    --blue-dim: #0ea5e9;
+    --amber: #f59e0b;
+    --amber-dim: #d97706;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --border: rgba(56,189,248,0.15);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 5vw;
+    background: rgba(5,10,20,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--blue);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--amber); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* ─── HERO ────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 5vw 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; left: -10%;
+    width: 60vw; height: 60vw;
+    background: radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -10%; right: -5%;
+    width: 40vw; height: 40vw;
+    background: radial-gradient(circle, rgba(245,158,11,0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--amber);
+    background: rgba(245,158,11,0.1);
+    border: 1px solid rgba(245,158,11,0.25);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.08em;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 1rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-name .accent { color: var(--blue); }
+  .hero-title {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    max-width: 520px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-title strong { color: var(--text); font-weight: 500; }
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--blue);
+    color: #050a14;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #7dd3fc; transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    font-family: var(--font-mono); font-size: 0.7rem;
+    color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+    animation: fadeUp 0.6s 0.6s ease both;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+  .hero-stats {
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+    margin-top: 3rem;
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+  .stat { border-left: 2px solid var(--blue); padding-left: 1rem; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--blue);
+  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
+
+  /* ─── SECTIONS ────────────────────────────────── */
+  section { padding: 6rem 5vw; }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    color: var(--text);
+    margin-bottom: 3rem;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── ABOUT ───────────────────────────────────── */
+  #about { background: var(--surface); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .about-highlights {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-top: 2rem;
+  }
+  .highlight-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+  .highlight-icon {
+    font-size: 1.25rem; margin-bottom: 0.5rem;
+    display: block;
+  }
+  .highlight-title { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+  .highlight-sub { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+  .about-right { display: flex; flex-direction: column; gap: 1.5rem; }
+  .info-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .info-item:last-child { border-bottom: none; }
+  .info-label {
+    font-family: var(--font-mono); font-size: 0.75rem;
+    color: var(--amber); letter-spacing: 0.08em;
+    text-transform: uppercase; min-width: 90px; padding-top: 0.2rem;
+  }
+  .info-val { font-size: 0.95rem; color: var(--text); line-height: 1.6; }
+
+  /* ─── EXPERIENCE ──────────────────────────────── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0.5rem; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--blue), var(--amber), transparent);
+  }
+  .tl-item {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 3rem;
+  }
+  .tl-dot {
+    position: absolute; left: -2.45rem; top: 0.35rem;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--blue);
+  }
+  .tl-dot.amber { border-color: var(--amber); }
+  .tl-date {
+    font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--amber); margin-bottom: 0.4rem;
+    letter-spacing: 0.08em;
+  }
+  .tl-role {
+    font-size: 1.25rem; font-weight: 600; color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+  .tl-company {
+    font-size: 0.9rem; color: var(--blue); margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+  .tl-list { list-style: none; }
+  .tl-list li {
+    font-size: 0.9rem; color: var(--muted);
+    padding-left: 1.2rem; position: relative;
+    margin-bottom: 0.4rem; line-height: 1.6;
+  }
+  .tl-list li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--blue); font-size: 0.85rem;
+  }
+  .tl-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+  .tag {
+    font-family: var(--font-mono); font-size: 0.7rem;
+    color: var(--blue); background: rgba(56,189,248,0.08);
+    border: 1px solid rgba(56,189,248,0.2);
+    padding: 0.2rem 0.6rem; border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+  .tag.amber {
+    color: var(--amber); background: rgba(245,158,11,0.08);
+    border-color: rgba(245,158,11,0.2);
+  }
+
+  /* ─── PROJECTS ────────────────────────────────── */
+  #projects { background: var(--surface); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--blue), var(--amber));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .project-card:hover { border-color: rgba(56,189,248,0.35); transform: translateY(-3px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-num {
+    font-family: var(--font-display); font-size: 3.5rem;
+    color: rgba(56,189,248,0.08); line-height: 1;
+    position: absolute; top: 1rem; right: 1.5rem;
+  }
+  .project-title {
+    font-size: 1.05rem; font-weight: 600; color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .project-sub {
+    font-size: 0.82rem; color: var(--amber); font-family: var(--font-mono);
+    letter-spacing: 0.06em; margin-bottom: 0.75rem;
+  }
+  .project-desc {
+    font-size: 0.88rem; color: var(--muted); line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-size: 0.82rem; color: var(--blue); text-decoration: none;
+    font-weight: 500; letter-spacing: 0.04em;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 0.6rem; }
+
+  /* ─── SKILLS ──────────────────────────────────── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .skill-group-title {
+    font-family: var(--font-mono); font-size: 0.75rem;
+    color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .skill-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.9rem; color: var(--muted);
+  }
+  .skill-item::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+  .certs { margin-top: 3rem; }
+  .certs-title {
+    font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .certs-row { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .cert-badge {
+    display: flex; align-items: center; gap: 0.75rem;
+    background: var(--surface);
+    border: 1px solid rgba(245,158,11,0.25);
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+  }
+  .cert-icon {
+    width: 32px; height: 32px;
+    background: rgba(245,158,11,0.1);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .cert-name { font-size: 0.85rem; font-weight: 500; color: var(--text); }
+  .cert-issuer { font-size: 0.75rem; color: var(--muted); }
+
+  /* ─── RESUME CTA ──────────────────────────────── */
+  #resume {
+    background: var(--surface);
+    text-align: center;
+  }
+  .resume-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .resume-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.95;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .resume-title .accent { color: var(--blue); }
+  .resume-desc {
+    font-size: 1rem; color: var(--muted);
+    margin-bottom: 2rem; line-height: 1.7;
+  }
+
+  /* ─── CONTACT ─────────────────────────────────── */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--blue); }
+  .cl-icon {
+    width: 36px; height: 36px;
+    background: rgba(56,189,248,0.08);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .cl-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.1rem; font-family: var(--font-mono); letter-spacing: 0.06em; }
+  .cl-val { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-label { font-size: 0.78rem; color: var(--muted); font-family: var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+  .form-input, .form-textarea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--blue); }
+  .form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+  /* ─── FOOTER ──────────────────────────────────── */
+  footer {
+    padding: 2rem 5vw;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-left {
+    font-family: var(--font-mono); font-size: 0.75rem;
+    color: var(--muted); letter-spacing: 0.06em;
+  }
+  .footer-left span { color: var(--blue); }
+  .footer-right {
+    font-size: 0.78rem; color: var(--muted);
+  }
+
+  /* ─── ANIMATIONS ──────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50%       { transform: scaleY(0.6); opacity: 0.5; }
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-highlights { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">kvs<span>.</span>jerial</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <span class="hero-tag">// Available for Summer 2025 Co-op / Internship</span>
+    <h1 class="hero-name">KARAN<br><span class="accent">VEER</span><br>JERIAL</h1>
+    <p class="hero-title">
+      <strong>Operations & Supply Chain Engineer</strong> — bridging industrial expertise with modern analytics
+    </p>
+    <p class="hero-desc">
+      MEM candidate at Northeastern University. 6+ years in manufacturing operations, procurement, and supply chain management. Building tools that make industrial systems smarter.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work →</a>
+      <a href="#resume" class="btn-outline">↓ Download Resume</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Suppliers Managed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">40%</div>
+        <div class="stat-label">Lead Time Reduction</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$500K+</div>
+        <div class="stat-label">Facility Project Delivered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Years Industry Exp.</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">// 01 — About</div>
+  <h2 class="section-title">Who I Am</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm an <strong>Operations & Supply Chain Engineer</strong> currently pursuing my Master of Engineering Management at Northeastern University (GPA 3.8, expected August 2027), authorized to work in the US without sponsorship.
+      </p>
+      <p>
+        My background spans <strong>6+ years at BTR Pvt. Ltd.</strong>, a forged steel rolls manufacturer in India, where I progressed from engineering roles to Manufacturing Operations Manager — overseeing heat treatment, CNC machining, NDT quality control, and multi-supplier procurement across the full roll production lifecycle.
+      </p>
+      <p>
+        I'm equally at home on a shop floor and in a dashboard. I build software tools — MES systems, demand forecasting apps, monitoring agents — that translate operational complexity into data that drives better decisions.
+      </p>
+      <p>
+        I hold AIST certifications in <strong>Process Metallurgy (PM 201)</strong> and <strong>EAF Steelmaking</strong>, and I'm actively connecting with the flat-rolled steel community through AIST events and industry networks.
+      </p>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <span class="highlight-icon">🏭</span>
+          <div class="highlight-title">Manufacturing Ops</div>
+          <div class="highlight-sub">Heat treatment, CNC machining, NDT, roll reconditioning</div>
+        </div>
+        <div class="highlight-card">
+          <span class="highlight-icon">🔗</span>
+          <div class="highlight-title">Supply Chain</div>
+          <div class="highlight-sub">Strategic sourcing, procurement, S&OP, MRP/EOQ</div>
+        </div>
+        <div class="highlight-card">
+          <span class="highlight-icon">💻</span>
+          <div class="highlight-title">Software & Analytics</div>
+          <div class="highlight-sub">React, Python, Supabase, OR-Tools, R, Power Apps</div>
+        </div>
+        <div class="highlight-card">
+          <span class="highlight-icon">📐</span>
+          <div class="highlight-title">Capital Projects</div>
+          <div class="highlight-sub">Greenfield facility, machine installations, vendor mgmt</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="info-item">
+        <span class="info-label">Location</span>
+        <span class="info-val">Boston, MA</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Education</span>
+        <span class="info-val">M.Eng Management, Northeastern University<br><span style="color:var(--muted);font-size:0.85rem;">GPA 3.8 · Expected Aug 2027</span></span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Authorization</span>
+        <span class="info-val">Authorized to work in the US without sponsorship</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Email</span>
+        <span class="info-val"><a href="/cdn-cgi/l/email-protection#523837203b333e7c39123c3d20263a3733212637203c7c373627" style="color:var(--blue);text-decoration:none;"><span class="__cf_email__" data-cfemail="7a101f08131b1654113a1415080e121f1b090e1f0814541f1e0f">[email&#160;protected]</span></a></span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">LinkedIn</span>
+        <span class="info-val"><a href="https://www.linkedin.com/in/karan-veer-singh-jerial-b1340216a" target="_blank" style="color:var(--blue);text-decoration:none;">karan-veer-singh-jerial</a></span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Seeking</span>
+        <span class="info-val">Supply Chain · Operations · Sourcing<br><span style="color:var(--muted);font-size:0.85rem;">Co-op / Internship · Summer 2025</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// 02 — Experience</div>
+  <h2 class="section-title">Career Timeline</h2>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Sep 2024 — Present</div>
+      <div class="tl-role">Graduate Student</div>
+      <div class="tl-company">Northeastern University · Boston, MA</div>
+      <ul class="tl-list">
+        <li>Master of Engineering Management (GPA 3.8) · Expected Aug 2027</li>
+        <li>Coursework: Supply Chain/OR (IE 7200), Engineering Project Management (EMGT 5220), statistics with R</li>
+        <li>Developed a CVRP routing optimizer for a 123-store distribution network, achieving 25.7% cost savings via sweep algorithm + 2-opt + random restarts (OR-Tools, PyVRP, LKH-3)</li>
+        <li>Built MRP lot-sizing models (EOQ, L4L, POQ, Wagner-Whitin) and LP aggregate planning formulations</li>
+      </ul>
+      <div class="tl-tags">
+        <span class="tag">OR-Tools</span><span class="tag">Python</span><span class="tag">R</span><span class="tag">LaTeX</span><span class="tag amber">Academic</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot amber"></div>
+      <div class="tl-date">2022 — 2024</div>
+      <div class="tl-role">Manufacturing Operations Manager</div>
+      <div class="tl-company">BTR Pvt. Ltd. · India</div>
+      <ul class="tl-list">
+        <li>Led end-to-end production of forged steel rolls through heat treatment, CNC machining, reconditioning, and QC — managing 50+ person cross-functional teams</li>
+        <li>Managed 30+ suppliers; achieved 30% procurement cost reduction and 40% material lead time reduction through strategic sourcing and e-bidding</li>
+        <li>Delivered $500K+ greenfield facility project 8% under budget, coordinating construction on-site with contractors and vendors</li>
+        <li>Installed brownfield grinding machine — sourced missing drive belt locally, achieved operational readiness within 2 hours</li>
+        <li>Implemented SAP procure-to-pay workflows (RFQ, e-bidding, invoice/bill processing)</li>
+      </ul>
+      <div class="tl-tags">
+        <span class="tag">SAP P2P</span><span class="tag">Heat Treatment</span><span class="tag">NDT</span><span class="tag">Capital Projects</span><span class="tag amber">Manufacturing</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot amber"></div>
+      <div class="tl-date">2019 — 2022</div>
+      <div class="tl-role">Production & Quality Engineer</div>
+      <div class="tl-company">BTR Pvt. Ltd. · India</div>
+      <ul class="tl-list">
+        <li>Managed production scheduling and WIP tracking across 8 production stages for ~20 active rolls simultaneously</li>
+        <li>Led NDT inspections: ultrasonic testing (UT), magnetic particle inspection (MPI), and Brinell/Rockwell hardness testing</li>
+        <li>Developed heat treatment SOPs for Cr-Mo-V grade work rolls (staged austenitizing, sub-zero treatment, differential neck tempering)</li>
+        <li>Supported roll reconditioning and re-grinding programs for TATA Steel, AMNS, JSW Steel, and Jindal Steel</li>
+      </ul>
+      <div class="tl-tags">
+        <span class="tag">Roll Metallurgy</span><span class="tag">UT/MPI</span><span class="tag">QC</span><span class="tag">SOP Development</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// 03 — Projects</div>
+  <h2 class="section-title">What I've Built</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-sub">React · Supabase · PostgreSQL</div>
+      <div class="project-title">BTR Production Tracking MES</div>
+      <p class="project-desc">Full-stack manufacturing execution system for a forged steel rolls plant. 13 production stages, refurbishing workflows, 3 user roles (Admin/Manager/Worker), stage gating, heat treatment logs, zone measurements, QC records, chemical composition tracking, KPI dashboard. Bilingual EN/Hindi.</p>
+      <div class="tl-tags" style="margin-bottom:0.75rem;">
+        <span class="tag">React 19</span><span class="tag">Supabase</span><span class="tag amber">Live</span>
+      </div>
+      <a href="https://bajrang-rolls.vercel.app" target="_blank" class="project-link">View Live ↗</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-sub">React · Supabase · Resend API</div>
+      <div class="project-title">NGO Inventory Manager</div>
+      <p class="project-desc">Donation tracking platform for nonprofits. 2D warehouse floor plan with 24 shelf slots, cart-based distribution system, recipient tracking, gift card tab, bilingual EN/ES support, 4 user roles, realtime updates, and Excel export. WCAG AA compliant. $0/month hosting.</p>
+      <div class="tl-tags" style="margin-bottom:0.75rem;">
+        <span class="tag">React 19</span><span class="tag">Realtime</span><span class="tag amber">Full-Stack</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-sub">Python · OR-Tools · PyVRP · LKH-3</div>
+      <div class="project-title">CVRP Distribution Network Optimizer</div>
+      <p class="project-desc">Vehicle routing optimization for a 123-store distribution network (NHG/MAD scenario). Implemented sweep algorithm, Clarke-Wright savings, 2-opt local search, and random restarts with DOT regulation constraints and time windows. Best result: 25.7% cost savings. Interactive Vercel dashboard with Folium/Plotly maps.</p>
+      <div class="tl-tags" style="margin-bottom:0.75rem;">
+        <span class="tag">CVRP</span><span class="tag">OR-Tools</span><span class="tag amber">Operations Research</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04</div>
+      <div class="project-sub">Python · Playwright · Railway · Telegram</div>
+      <div class="project-title">Workday Job Monitoring Agent</div>
+      <p class="project-desc">Automated agent that continuously monitors the Northeastern Workday job board for matching roles. Sends Telegram and macOS desktop notifications when new job IDs are detected. Runs 24/7 on Railway with persistent JSON storage, headless Chromium, and configurable ID pattern matching.</p>
+      <div class="tl-tags" style="margin-bottom:0.75rem;">
+        <span class="tag">Playwright</span><span class="tag">Railway</span><span class="tag amber">Agentic AI</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">05</div>
+      <div class="project-sub">React · Recharts · Weighted Moving Average</div>
+      <div class="project-title">WMA Demand Forecasting Dashboard</div>
+      <p class="project-desc">Forecasting tool built on real BTR customer PO data (9 POs, 2020-2026) for 410mm and 480mm diameter rolls. Uses weighted moving average (50/30/20 weights) for inter-arrival time and quantity prediction. Interactive dashboard with forecast visualization and model controls.</p>
+      <div class="tl-tags" style="margin-bottom:0.75rem;">
+        <span class="tag">Forecasting</span><span class="tag">React</span><span class="tag amber">Supply Chain</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">06</div>
+      <div class="project-sub">Microsoft Power Apps · SharePoint Lists · M365</div>
+      <div class="project-title">BTR Production WIP Tracker (Power Apps)</div>
+      <p class="project-desc">Canvas app built on M365 to digitize BTR's 8-stage production pipeline, replacing manual paper-based tracking for ~20 active rolls at a time. SharePoint Lists backend with no premium licensing. Built as an operations digitization portfolio piece demonstrating low-cost MES on existing enterprise infrastructure.</p>
+      <div class="tl-tags" style="margin-bottom:0.75rem;">
+        <span class="tag">Power Apps</span><span class="tag">SharePoint</span><span class="tag amber">Operations</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">07</div>
+      <div class="project-sub">React · NSE/BSE · Multi-timeframe</div>
+      <div class="project-title">Trading Signal Analyzer (NSE/BSE)</div>
+      <p class="project-desc">Multi-timeframe trading signal tool for Indian equity markets. Integrates 2-min, 15-min, and 30-min confluence signals with VWAP, EMA ribbons, RSI, Supertrend, Bollinger Bands, and ATR-based dynamic stop calculations. Built for discretionary intraday decision support.</p>
+      <div class="tl-tags" style="margin-bottom:0.75rem;">
+        <span class="tag">Algorithmic Trading</span><span class="tag">React</span><span class="tag amber">Fintech</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// 04 — Skills</div>
+  <h2 class="section-title">Expertise</h2>
+  <div class="skills-grid">
+
+    <div class="skill-group">
+      <div class="skill-group-title">Operations & Manufacturing</div>
+      <ul class="skill-list">
+        <li class="skill-item">Heat Treatment & Roll Metallurgy</li>
+        <li class="skill-item">NDT: UT, MPI, Hardness Testing</li>
+        <li class="skill-item">Production Scheduling & WIP Management</li>
+        <li class="skill-item">Capital Project Management</li>
+        <li class="skill-item">Lean & Continuous Improvement</li>
+        <li class="skill-item">Standard Operating Procedure (SOP) Development</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Supply Chain & Procurement</div>
+      <ul class="skill-list">
+        <li class="skill-item">Strategic Sourcing & Supplier Management</li>
+        <li class="skill-item">SAP Procure-to-Pay (RFQ, e-Bidding)</li>
+        <li class="skill-item">MRP / EOQ / POQ / Wagner-Whitin</li>
+        <li class="skill-item">Demand Forecasting & S&OP</li>
+        <li class="skill-item">Inventory Management & Control</li>
+        <li class="skill-item">Logistics & Transportation Planning</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Analytics & Software</div>
+      <ul class="skill-list">
+        <li class="skill-item">Python (Pandas, OR-Tools, Playwright)</li>
+        <li class="skill-item">R (Hypothesis Testing, Control Charts)</li>
+        <li class="skill-item">React / JavaScript / Vite</li>
+        <li class="skill-item">Supabase / PostgreSQL</li>
+        <li class="skill-item">Microsoft Power Apps (Canvas Apps)</li>
+        <li class="skill-item">SharePoint Lists · M365 Integration</li>
+        <li class="skill-item">LaTeX · Excel · Data Visualization</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Project Management & Tools</div>
+      <ul class="skill-list">
+        <li class="skill-item">Agile / Scrum Methodologies</li>
+        <li class="skill-item">Waterfall & Hybrid PM</li>
+        <li class="skill-item">Cross-functional Team Leadership (50+ people)</li>
+        <li class="skill-item">Vendor Negotiation & Contract Management</li>
+        <li class="skill-item">Risk Assessment & Mitigation</li>
+        <li class="skill-item">AIST Member — PM201, EAF Steelmaking</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="certs">
+    <div class="certs-title">// Certifications & Memberships</div>
+    <div class="certs-row">
+      <div class="cert-badge">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">AIST PM 201</div>
+          <div class="cert-issuer">Process Metallurgy · AIST</div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">EAF Steelmaking</div>
+          <div class="cert-issuer">Electric Arc Furnace · AIST</div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">MEM Student</div>
+          <div class="cert-issuer">Northeastern University · GPA 3.8</div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <div class="cert-icon">🌐</div>
+        <div>
+          <div class="cert-name">AIST Member</div>
+          <div class="cert-issuer">Globe-Trotters Chapter</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="resume-inner">
+    <div class="section-label" style="text-align:center;">// 05 — Resume</div>
+    <h2 class="resume-title">GET MY<br><span class="accent">RESUME</span></h2>
+    <p class="resume-desc">
+      Full details on experience, projects, skills, and certifications — tailored for Supply Chain, Operations, and Manufacturing roles.
+    </p>
+    <div class="hero-cta" style="justify-content:center;">
+      <a href="#" class="btn-primary" id="resume-btn">↓ Download Resume (PDF)</a>
+      <a href="/cdn-cgi/l/email-protection#deb4bbacb7bfb2f0b59eb0b1acaab6bbbfadaabbacb0f0bbbaab" class="btn-outline">Get in Touch →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">// 06 — Contact</div>
+  <h2 class="section-title">Let's Talk</h2>
+  <div class="contact-grid">
+    <div>
+      <p style="color:var(--muted);font-size:1rem;margin-bottom:1.5rem;max-width:400px;">
+        Whether you're looking for a supply chain intern, have a project collaboration in mind, or just want to connect — I'm all ears.
+      </p>
+      <div class="contact-links">
+        <a href="/cdn-cgi/l/email-protection#b4ded1c6ddd5d89adff4dadbc6c0dcd1d5c7c0d1c6da9ad1d0c1" class="contact-link">
+          <div class="cl-icon">✉</div>
+          <div>
+            <div class="cl-label">Email</div>
+            <div class="cl-val"><span class="__cf_email__" data-cfemail="90faf5e2f9f1fcbefbd0feffe2e4f8f5f1e3e4f5e2febef5f4e5">[email&#160;protected]</span></div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/karan-veer-singh-jerial-b1340216a" target="_blank" class="contact-link">
+          <div class="cl-icon">in</div>
+          <div>
+            <div class="cl-label">LinkedIn</div>
+            <div class="cl-val">karan-veer-singh-jerial</div>
+          </div>
+        </a>
+        <div class="contact-link" style="cursor:default;">
+          <div class="cl-icon">📍</div>
+          <div>
+            <div class="cl-label">Location</div>
+            <div class="cl-val">Boston, MA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-group">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-input" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell me about the role or opportunity..."></textarea>
+      </div>
+      <button class="btn-primary" style="border:none;cursor:pointer;align-self:flex-start;" onclick="handleFormSubmit()">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    kvs<span>.</span>jerial — Operations & Supply Chain Engineer
+  </div>
+  <div class="footer-right" style="color:var(--muted);font-size:0.78rem;">
+    Boston, MA · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="acc6c9dec5cdc082c7ecc2c3ded8c4c9cddfd8c9dec282c9c8d9">[email&#160;protected]</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Smooth active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.style.color = '');
+        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (active) active.style.color = 'var(--blue)';
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => observer.observe(s));
+
+  // Resume download placeholder
+  document.getElementById('resume-btn').addEventListener('click', e => {
+    e.preventDefault();
+    alert('To link your resume PDF, replace the href on the Download Resume button with your PDF URL or file path.');
+  });
+
+  // Contact form
+  function handleFormSubmit() {
+    const name = document.querySelector('.form-input').value;
+    const email = document.querySelectorAll('.form-input')[1].value;
+    const msg = document.querySelector('.form-textarea').value;
+    if (!name || !email || !msg) { alert('Please fill in all fields.'); return; }
+    window.location.href = `mailto:jerial.k@northeastern.edu?subject=Portfolio Inquiry from ${name}&body=${e
