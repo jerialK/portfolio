@@ -955,7 +955,7 @@
         <label class="form-label">Message</label>
         <textarea class="form-textarea" placeholder="Tell me about the role or opportunity..."></textarea>
       </div>
-      <button class="btn-primary" style="border:none;cursor:pointer;align-self:flex-start;" onclick="handleFormSubmit()">Send Message →</button>
+      <button class="btn-primary" id="send-btn" style="border:none;cursor:pointer;align-self:flex-start;" onclick="sendMessage()">Send Message →</button>
     </div>
   </div>
 </section>
@@ -976,13 +976,34 @@ const em = 'jerial.k' + '@' + 'northeastern.edu';
 document.getElementById('email-display').textContent = em;
 document.getElementById('email-anchor').href = 'mailto:' + em;
 
-function handleFormSubmit() {
+async function sendMessage() {
   const inputs = document.querySelectorAll('.form-input');
   const name = inputs[0].value.trim();
   const userEmail = inputs[1].value.trim();
   const msg = document.querySelector('.form-textarea').value.trim();
   if (!name || !userEmail || !msg) { alert('Please fill in all fields.'); return; }
-  window.location.href = 'mailto:' + em + '?subject=' + encodeURIComponent('Portfolio Inquiry from ' + name) + '&body=' + encodeURIComponent(msg + '\n\nFrom: ' + name + ' (' + userEmail + ')');
+  const btn = document.getElementById('send-btn');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/mdaynvwg', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email: userEmail, message: msg })
+    });
+    if (res.ok) {
+      const form = document.querySelector('.contact-form');
+      form.innerHTML = '<p style="color:var(--blue);font-family:var(--font-mono);font-size:1rem;letter-spacing:0.05em;">Message sent! I will get back to you soon.</p>';
+    } else {
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    }
+  } catch {
+    btn.textContent = 'Send Message →';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
 }
 
 const sections = document.querySelectorAll('section[id]');
