@@ -903,7 +903,7 @@
       Full details on experience, projects, skills, and certifications — tailored for Supply Chain, Operations, and Manufacturing roles.
     </p>
     <div class="hero-cta" style="justify-content:center;">
-      <a href="#" class="btn-primary" id="resume-btn">↓ Download Resume (PDF)</a>
+      <a href="./resume.pdf" target="_blank" class="btn-primary">↓ Download Resume (PDF)</a>
       <a href="/cdn-cgi/l/email-protection#deb4bbacb7bfb2f0b59eb0b1acaab6bbbfadaabbacb0f0bbbaab" class="btn-outline">Get in Touch →</a>
     </div>
   </div>
@@ -984,12 +984,6 @@
     });
   }, { threshold: 0.4 });
   sections.forEach(s => observer.observe(s));
-
-  // Resume download placeholder
-  document.getElementById('resume-btn').addEventListener('click', e => {
-    e.preventDefault();
-    alert('To link your resume PDF, replace the href on the Download Resume button with your PDF URL or file path.');
-  });
 
   // Contact form
   function handleFormSubmit() {
