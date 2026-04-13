@@ -919,11 +919,11 @@
         Whether you're looking for a supply chain intern, have a project collaboration in mind, or just want to connect — I'm all ears.
       </p>
       <div class="contact-links">
-        <a href="#" class="contact-link email-link">
+        <a href="#" id="email-anchor" class="contact-link">
           <div class="cl-icon">✉</div>
           <div>
             <div class="cl-label">Email</div>
-            <div class="cl-val email-link-val"></div>
+            <div class="cl-val" id="email-display">Loading...</div>
           </div>
         </a>
         <a href="https://www.linkedin.com/in/karan-veer-singh-jerial-b1340216a" target="_blank" class="contact-link">
@@ -970,36 +970,43 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Smooth active nav on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => l.style.color = '');
-        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (active) active.style.color = 'var(--blue)';
-      }
-    });
-  }, { threshold: 0.4 });
-  sections.forEach(s => observer.observe(s));
+<script>
+const em = 'jerial.k' + '@' + 'northeastern.edu';
 
-  const email = 'jerial.k' + '@' + 'northeastern.edu';
-  document.querySelectorAll('.email-link').forEach(el => {
-    if (!el.classList.contains('btn-outline') && !el.classList.contains('contact-link')) {
-      el.textContent = email;
+document.getElementById('email-display').textContent = em;
+document.getElementById('email-anchor').href = 'mailto:' + em;
+
+function handleFormSubmit() {
+  const inputs = document.querySelectorAll('.form-input');
+  const name = inputs[0].value.trim();
+  const userEmail = inputs[1].value.trim();
+  const msg = document.querySelector('.form-textarea').value.trim();
+  if (!name || !userEmail || !msg) { alert('Please fill in all fields.'); return; }
+  window.location.href = 'mailto:' + em + '?subject=' + encodeURIComponent('Portfolio Inquiry from ' + name) + '&body=' + encodeURIComponent(msg + '\n\nFrom: ' + name + ' (' + userEmail + ')');
+}
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.style.color = '');
+      const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
+      if (active) active.style.color = 'var(--blue)';
     }
-    el.href = 'mailto:' + email;
   });
-  const emailValEl = document.querySelector('.email-link-val');
-  if (emailValEl) emailValEl.textContent = email;
+}, { threshold: 0.4 });
+sections.forEach(s => observer.observe(s));
 
-  function handleFormSubmit() {
-    const inputs = document.querySelectorAll('.form-input');
-    const name = inputs[0].value.trim();
-    const emailVal = inputs[1].value.trim();
-    const msg = document.querySelector('.form-textarea').value.trim();
-    if (!name || !emailVal || !msg) { alert('Please fill in all fields.'); return; }
-    window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent('Portfolio Inquiry from ' + name) + '&body=' + encodeURIComponent(msg + '\n\nFrom: ' + name + ' (' + emailVal + ')');
-  }
+const cards = document.querySelectorAll('.project-card, .skill-group, .tl-item, .cert-badge');
+const cardObserver = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = 'fadeUp 0.5s ' + (i * 0.05) + 's ease both';
+      cardObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+cards.forEach(c => { c.style.opacity = '0'; cardObserver.observe(c); });</script>
+</body>
+</html>
